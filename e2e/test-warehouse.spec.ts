@@ -1,4 +1,4 @@
-import { test, expect } from './fixtures';
+import { test } from './fixtures';
 
 const randomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
@@ -12,6 +12,8 @@ const randomDigits = (length: number) =>
 const randomChoice = <T,>(items: T[]) => items[randomInt(0, items.length - 1)];
 
 test('新建仓库', async ({ page }) => {
+  await page.goto('https://demo.gwms.jmalltech.com/admin/index');
+
   const mock = {
     code: `WH${randomDigits(4)}`,
     name: `Warehouse-${randomDigits(3)}`,
